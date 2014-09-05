@@ -16,6 +16,7 @@ Via Composer
 
 ## Available File Types
 
+* PdfFileResponse (application/pdf)
 * TextFileResponse (text/plain)
 * ZipFileResponse (application/zip)
 
