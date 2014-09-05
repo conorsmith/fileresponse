@@ -18,3 +18,19 @@ Via Composer
 
 * TextFileResponse (text/plain)
 * ZipFileResponse (application/zip)
+
+## Examples
+
+```
+use ConorSmith\FileResponse\TextFileResponse;
+
+$response = new TextFileResponse('example.txt', 'This is the text file\'s contents');
+$response->send();
+```
+
+```
+use ConorSmith\FileResponse\ZipFileResponse;
+
+$response = new ZipFileResponse('example.zip', file_get_contents('/path/to/example.zip'));
+$response->send();
+```
