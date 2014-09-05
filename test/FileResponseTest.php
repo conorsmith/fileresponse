@@ -2,8 +2,6 @@
 
 namespace ConorSmith\FileResponse\Test;
 
-use ConorSmith\FileResponse\TextFileResponse;
-
 class FileResponseTest extends \PHPUnit_Framework_TestCase
 {
     /**
