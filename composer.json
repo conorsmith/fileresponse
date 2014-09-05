@@ -1,0 +1,26 @@
+{
+    "name": "conorsmith/fileresponse",
+    "description": "Wrapper responses in the Symfony HttpFoundation component.",
+    "keywords": [
+        "http",
+        "response",
+        "file"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Conor Smith",
+            "email": "conor@tercet.io",
+            "homepage": "http://conorsmith.ie/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "symfony/http-foundation": "2.6.*@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "ConorSmith\\FileResponse\\": "src"
+        }
+    }
+}
