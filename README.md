@@ -29,9 +29,19 @@ $response = new TextFileResponse('example.txt', 'This is the text file\'s conten
 $response->send();
 ```
 
-```
-use ConorSmith\FileResponse\ZipFileResponse;
+You can use the abstract `FileResponse` class to create your own custom file responses.
 
-$response = new ZipFileResponse('example.zip', file_get_contents('/path/to/example.zip'));
-$response->send();
+```
+use ConorSmith\FileResponse\FileResponse;
+
+class NsfwJpegFileResponse extends FileResponse
+{
+    public function __construct($filename, $content)
+    {
+        parent::__construct($filename, $content, [
+            'Content-Type' => 'image/jpeg',
+            'X-Content-NSFW' => true
+        ]);
+    }
+}
 ```
