@@ -9,7 +9,7 @@ Via Composer
 ```
 {
     "require": {
-        "conorsmith/fileresponse": "0.1.*"
+        "conorsmith/fileresponse": "0.2.*"
     }
 }
 ```
