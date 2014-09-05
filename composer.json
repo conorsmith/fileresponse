@@ -1,6 +1,6 @@
 {
     "name": "conorsmith/fileresponse",
-    "description": "Wrapper responses in the Symfony HttpFoundation component.",
+    "description": "Wrapper for responses in the Symfony HttpFoundation component.",
     "keywords": [
         "http",
         "response",
