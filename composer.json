@@ -25,5 +25,10 @@
         "psr-4": {
             "ConorSmith\\FileResponse\\": "src"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ConorSmith\\FileResponse\\Test\\": "test"
+        }
     }
 }
