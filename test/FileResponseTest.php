@@ -53,7 +53,7 @@ class FileResponseTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException', "A Content-Type header must be set.");
 
-        $fileResponse = new Helper\BasicFileResponse('the-test-filename', 'the-test-content', []);
+        $fileResponse = new Helper\BasicFileResponse('the-test-filename', 'the-test-content', array());
     }
 
     /**
@@ -61,9 +61,9 @@ class FileResponseTest extends \PHPUnit_Framework_TestCase
      */
     public function itCanSetAdditionalHeaders()
     {
-        $response = $this->buildFileResponseAndGetResponse([
+        $response = $this->buildFileResponseAndGetResponse(array(
             'Content-Type' => 'text/plain',
-        ]);
+        ));
 
         $this->assertEquals(
             'text/plain',
@@ -77,9 +77,9 @@ class FileResponseTest extends \PHPUnit_Framework_TestCase
      */
     public function itCanOverrideExistingHeaders()
     {
-        $response = $this->buildFileResponseAndGetResponse([
+        $response = $this->buildFileResponseAndGetResponse(array(
             'Pragma' => 'a-different-cache-setting'
-        ]);
+        ));
 
         $this->assertEquals(
             'a-different-cache-setting',
@@ -95,7 +95,7 @@ class FileResponseTest extends \PHPUnit_Framework_TestCase
     {
         ob_start();
 
-        $fileResponse = new Helper\MinimumFileResponse('the-test-filename', 'the-test-content', []);
+        $fileResponse = new Helper\MinimumFileResponse('the-test-filename', 'the-test-content', array());
 
         $fileResponse->send();
 
@@ -122,8 +122,12 @@ class FileResponseTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    protected function buildFileResponseAndGetResponse(array $additionalHeaders = [])
+    protected function buildFileResponseAndGetResponse(array $additionalHeaders = null)
     {
+        if (is_null($additionalHeaders)) {
+            $additionalHeaders = array();
+        }
+
         $fileResponse = new Helper\MinimumFileResponse('the-test-filename', 'the-test-content', $additionalHeaders);
 
         return $fileResponse->getResponse();
