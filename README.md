@@ -16,7 +16,11 @@ Via Composer
 
 ## Available File Types
 
+* CsvFileResponse (text/csv)
+* GifFileResponse (image/gif)
+* JpegFileResponse (image/jpeg)
 * PdfFileResponse (application/pdf)
+* PngFileResponse (image/png)
 * TextFileResponse (text/plain)
 * ZipFileResponse (application/zip)
 
