@@ -42,10 +42,10 @@ class NsfwJpegFileResponse extends FileResponse
 {
     public function __construct($filename, $content)
     {
-        parent::__construct($filename, $content, [
+        parent::__construct($filename, $content, array(
             'Content-Type' => 'image/jpeg',
-            'X-Content-NSFW' => true
-        ]);
+            'X-Content-NSFW' => true,
+        ));
     }
 }
 ```
