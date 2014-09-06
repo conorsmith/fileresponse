@@ -49,15 +49,11 @@ class FileResponseTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function itCanGetItsResponse()
+    public function itRequiresAContentTypeHeader()
     {
-        $response = $this->buildFileResponseAndGetResponse();
+        $this->setExpectedException('InvalidArgumentException', "A Content-Type header must be set.");
 
-        $this->assertInstanceOf(
-            'Symfony\\Component\\HttpFoundation\\Response',
-            $response,
-            "The FileResponse did not return a Response object."
-        );
+        $fileResponse = new Helper\BasicFileResponse('the-test-filename', 'the-test-content', []);
     }
 
     /**
@@ -99,7 +95,7 @@ class FileResponseTest extends \PHPUnit_Framework_TestCase
     {
         ob_start();
 
-        $fileResponse = new Helper\BasicFileResponse('the-test-filename', 'the-test-content', []);
+        $fileResponse = new Helper\MinimumFileResponse('the-test-filename', 'the-test-content', []);
 
         $fileResponse->send();
 
@@ -112,9 +108,23 @@ class FileResponseTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * @test
+     */
+    public function itCanGetItsResponse()
+    {
+        $response = $this->buildFileResponseAndGetResponse();
+
+        $this->assertInstanceOf(
+            'Symfony\\Component\\HttpFoundation\\Response',
+            $response,
+            "The FileResponse did not return a Response object."
+        );
+    }
+
     protected function buildFileResponseAndGetResponse(array $additionalHeaders = [])
     {
-        $fileResponse = new Helper\BasicFileResponse('the-test-filename', 'the-test-content', $additionalHeaders);
+        $fileResponse = new Helper\MinimumFileResponse('the-test-filename', 'the-test-content', $additionalHeaders);
 
         return $fileResponse->getResponse();
     }

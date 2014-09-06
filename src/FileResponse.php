@@ -11,6 +11,10 @@ abstract class FileResponse
 
     public function __construct($filename, $contents, array $additionalHeaders)
     {
+        if ( ! array_key_exists('Content-Type', $additionalHeaders)) {
+            throw new \InvalidArgumentException("A Content-Type header must be set.");
+        }
+
         $this->response = new Response(
             $contents,
             Response::HTTP_OK,
