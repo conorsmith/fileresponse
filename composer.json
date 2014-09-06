@@ -4,7 +4,8 @@
     "keywords": [
         "http",
         "response",
-        "file"
+        "file",
+        "download"
     ],
     "license": "MIT",
     "authors": [
